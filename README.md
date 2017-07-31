@@ -96,7 +96,7 @@ Prints text data, parsing it as a template.
 
 ```
 $ curl -X POST --data "{{#centerWrap}}Hello, World{{/centerWrap}}" http://localhost:8080/document
-
+{"success":true}
 ```
 
 #### POST /order
