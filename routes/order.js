@@ -1,4 +1,5 @@
 const _ = require("koa-route");
+const Mustache = require("mustache");
 const lp = require("../lib/lp");
 
 const heading = Buffer.from([ 27, 33, 32 ]);
@@ -6,10 +7,10 @@ const plain = Buffer.from([ 27, 33, 0 ]);
 const smaller = Buffer.from([ 27, 33, 1 ]);
 
 function centerPad(text, width = 32) {
-	text = text.toString();
-
-	const pad = " ".repeat((width - text.length) / 2);
-	return `${pad}${text}${pad}\n`;
+	return textWrap(text, width).match(new RegExp(`.{1,${width}}`, "g")).map(line => {
+		const pad = " ".repeat((width - line.length) / 2);
+		return `${pad}${line}`;
+	}).join("\n");
 }
 
 function rightPad(text, width = 32) {
@@ -61,5 +62,16 @@ module.exports = _.post("/order", async ctx => {
 	lp.write(`${plain}${"-".repeat(32)}`);
 	lp.write(`${plain}${format([ "Total", total ])}`);
 	lp.write(`${plain}${"-".repeat(32)}\n\n`);
-	lp.write(`${smaller}${textWrap(body.text, 42)}\n`);
+	lp.write(`${smaller}${Mustache.render(body.text, {
+		br: "\n",
+		center() {
+			return (text, render) => centerPad(render(text), 42);
+		},
+		wrap() {
+			return (text, render) => textWrap(render(text), 42);
+		},
+		underline() {
+			return (text, render) => `${Buffer.from([ 27, 45, 2 ])}${render(text)}${Buffer.from([ 27, 45, 0 ])}`
+		}
+	})}\n`);
 });
