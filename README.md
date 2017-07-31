@@ -2,6 +2,8 @@
 
 A microservice for printing receipts, built at [Tedra](https://github.com/tedra).
 
+![](http://i.imgur.com/xaSlRW4.jpg)
+
 ## Deployment
 
 ### Raspberry Pi
