@@ -109,7 +109,7 @@ Prints a receipt, formatting it as an order.
 	date: "Monday, 31 July 2017",
 	order: "Order #131390",
 	total: "£1000402",
-	text: "{{#center}}Thank you for shopping with us, we hope you enjoy maximum uptime with little latency.{{/center}}{{#wrap}}{{#u}}http://github.com/montyanderson/receipt-service{{/u}}{{/wrap}}",
+	text: "{{#centerWrap}}Thank you for shopping with us, we hope you enjoy maximum uptime with little latency.{{/centerWrap}}",
 	items: [
 		{
 			name: "Node.js Microservice",
