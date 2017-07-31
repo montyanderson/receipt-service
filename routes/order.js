@@ -74,4 +74,6 @@ module.exports = _.post("/order", async ctx => {
 			return (text, render) => `${Buffer.from([ 27, 45, 2 ])}${render(text)}${Buffer.from([ 27, 45, 0 ])}`
 		}
 	})}\n`);
+
+	lp.write("\n\n\n\n");
 });
