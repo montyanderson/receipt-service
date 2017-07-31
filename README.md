@@ -34,3 +34,7 @@ $ node index
 ```
 
 You're done!
+
+## API
+
+### POST /raw
