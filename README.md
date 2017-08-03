@@ -2,6 +2,8 @@
 
 A microservice for printing receipts, built at [Tedra](https://github.com/tedra).
 
+[![dependencies Status](https://david-dm.org/montyanderson/receipt-service/status.svg)](https://david-dm.org/montyanderson/receipt-service)
+
 ![](http://i.imgur.com/xaSlRW4.jpg)
 
 ## Deployment
