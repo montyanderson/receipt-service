@@ -25,6 +25,8 @@ module.exports = _.post("/order", async ctx => {
 		for(let line of nameLines) {
 			lp.write(`${utils.plain}${line}\n`);
 		}
+
+		lp.write("\n");
 	}
 
 	const total = body.total.toString();
