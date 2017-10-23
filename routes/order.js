@@ -14,9 +14,17 @@ module.exports = _.post("/order", async ctx => {
 
 	for(let item of body.items) {
 		const price = item.price.toString();
-		const name = item.name.slice(0, 32 - price.length - 1);
 
-		lp.write(`${utils.plain}${utils.format([ name, price ])}`);
+		const nameLength = 32 - price.length - 1;
+
+		const nameLines = (typeof item.name == "string" ? [ item.name ] : item.name)
+			.map(line => line.slice(0, nameLength));
+
+		lp.write(`${utils.plain}${utils.format([ nameLines.shift(), price ])}`);
+
+		for(let line of nameLines) {
+			lp.write(`${utils.plain}${line}\n`);
+		}
 
 		if(item.extra != undefined) {
 			lp.write(`${render(item.extra)}\n`);
