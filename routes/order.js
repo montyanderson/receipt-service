@@ -36,7 +36,7 @@ module.exports = _.post("/order", async ctx => {
 	lp.write(`${utils.plain}${"-".repeat(32)}\n\n`);
 	lp.write(`${render(body.text)}`);
 
-	lp.write("\n\n\n\n");
+	lp.write("\n\n\n\n\n\n");
 
 	ctx.body = JSON.stringify({ success: true });
 });
