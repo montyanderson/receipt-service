@@ -17,6 +17,10 @@ module.exports = _.post("/order", async ctx => {
 		const name = item.name.slice(0, 32 - price.length - 1);
 
 		lp.write(`${utils.plain}${utils.format([ name, price ])}`);
+
+		if(item.extra != undefined) {
+			lp.write(`${render(item.extra)}`);
+		}
 	}
 
 	const total = body.total.toString();
