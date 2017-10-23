@@ -19,7 +19,7 @@ module.exports = _.post("/order", async ctx => {
 		lp.write(`${utils.plain}${utils.format([ name, price ])}`);
 
 		if(item.extra != undefined) {
-			lp.write(`${render(item.extra)}`);
+			lp.write(`${render(item.extra)}\n`);
 		}
 	}
 
